@@ -1,0 +1,94 @@
+<!doctype !html>
+
+<html>
+
+<head>
+  <script src="https://unpkg.com/webnative@0.25.2/dist/index.umd.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/mvp.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta charset="utf-8">
+  <meta property="og:title" content="Platform API for Apps Demo">
+  <meta property="og:site_name" content="Awesome Thin Nylon Dolphin">
+  <meta property="og:url" content="https://awesome-thin-nylon-dolphin.fission.app/">
+  <meta property="og:description"
+    content="A demo site showing Fission's webnative platform API for publishing apps from the browser.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://awesome-thin-nylon-dolphin.fission.app/dolphin.png">
+  <title>Platform API for Apps Demo - Awesome Thin Nylon Dolphin</title>
+  <script defer type="module" src="main.js"></script>
+</head>
+
+<body>
+  <main>
+    <article>
+      <h1>Platform APIs demo</h1>
+    </article>
+
+    <article>
+      <strong>Auth scenario:</strong>
+      <span id="scenario"></span>
+    </article>
+
+    <article>
+      <button id="sign-in" style="display: none">Sign in</button>
+    </article>
+
+
+    <article id="create-app" style="display: none">
+      <h3>Create an app</h3>
+      <p>Let's start by creating an app. The <code>webnative.apps.create</code>
+        method registers a domain name and prepares webnative for your app.
+      </p>
+      <button id="create-app-button">Create App</button>
+    </article>
+
+    <article id="editor" style="display: none">
+      <h3>Edit App</h3>
+      <p>Your site has been registered, but we need to add some content and
+        publish it. Enter some HTML and save when you are ready.
+      </p>
+      <form>
+        <textarea id="editor-input" rows="10" cols="120"></textarea>
+        <input id="save-html" type="submit" value="Save"></input>
+      </form>
+    </article>
+
+    <article id="published-site" style="display: none">
+      <h3>Preview App</h3>
+      <p>Your site is registered at <a id="published-url" target="_blank"></a>.</p>
+      <form id="published-container">
+        <span id="published-site-frame"></span>
+        <input id="reload-published-button" type="submit" value="Reload"></input>
+      </form>
+    </article>
+
+    <article id="delete-app" style="display: none">
+      <h3>Delete App</h3>
+      <p>You can delete your app to reset this example.</p>
+      <button id="delete-app-button">Delete App</button>
+    </article>
+
+    <article id="learn-more" style="display: none">
+      <hr />
+      <h2>Learn More</h2>
+      <ul>
+        <li>Github Repo for this Demo:
+          <a href="https://github.com/fission-suite/platform-api-apps-example" target="_blank">
+            platform-api-apps-example
+          </a>
+        </li>
+        <li>Fission forum post:
+          <a href="https://talk.fission.codes/t/platform-api-for-apps/2019" target="_blank">
+            Platform API for Apps 
+          </a>
+        </li>
+        <li>Read the
+          <a href="https://guide.fission.codes/developers/webnative/platform" target="_blank">Platform APIs guide</a>
+          for more information.
+        </li>
+      </ul>
+      </article>
+  </main>
+</body>
+
+</html>
