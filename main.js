@@ -20,14 +20,13 @@ const fissionInit = {
   permissions: {
 
     // We store the domain name of the published app
-    // in app storage.
+    // in app storage
     app: {
       name: 'platform-api-demo',
       creator: 'bgins'
     },
 
-    // The HTML for the app is published to the
-    // public filesystem.
+    // The HTML for the app is staged in the public filesystem
     fs: {
       public: [{ directory: ["Apps"] }],
     },
@@ -60,7 +59,7 @@ webnative.initialize(fissionInit).then(async state => {
       const configureAppDemo = async domain => {
         const name = domain.split('.')[0];
 
-        // The path for published app and its index.html
+        // The paths where we stage the app in WNFS
         const appPath = webnative.path.directory('public', 'Apps', `${name}`)
         const appIndexPath = webnative.path.file('public', 'Apps', `${name}`, 'Published', 'index.html')
 
@@ -72,7 +71,7 @@ webnative.initialize(fissionInit).then(async state => {
           await fs.write(appIndexPath, content);
           await fs.publish();
 
-          // Retrieve the CID for the published app directory
+          // Retrieve the CID of the staging app directory
           const ipfsPath = webnative.path.directory('Apps', `${name}`, 'Published')
           const posixPath = webnative.path.toPosix(ipfsPath);
           const ipfs = await webnative.ipfs.get();
@@ -117,7 +116,7 @@ webnative.initialize(fissionInit).then(async state => {
           // A stored domain and matching registered domain were found
           await configureAppDemo(domain);
 
-          // Load the app into an iframe.
+          // Load the app into an iframe
           publishedSiteFrame = dom.loadApp(domain, publishedSiteUrl, publishedSiteFrame, publishedContainer)
 
           dom.show('editor', 'published-site', 'delete-app', 'learn-more');
