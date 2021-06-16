@@ -20,14 +20,14 @@ const fissionInit = {
   permissions: {
 
     // We store the domain name of the published app
-    // in app storage
+    // in app storage.
     app: {
       name: 'platform-api-demo',
       creator: 'bgins'
     },
 
     // The HTML for the app is published to the
-    // public filesystem
+    // public filesystem.
     fs: {
       public: [{ directory: ["Apps"] }],
     },
@@ -55,7 +55,7 @@ webnative.initialize(fissionInit).then(async state => {
 
       // Set up a path to store the domain name for the app published by this demo.
       // This domain name is stored in the demo app's app storage.
-      const storedDomainPath = fs.appPath(webnative.path.file('domain'));
+      const storedDomainPath = fs.appPath(webnative.path.file('domain.txt'));
 
       const configureAppDemo = async domain => {
         const name = domain.split('.')[0];
@@ -113,12 +113,12 @@ webnative.initialize(fissionInit).then(async state => {
       if (await fs.exists(storedDomainPath)) {
         const domain = await fs.read(storedDomainPath);
 
-        // Load the app into an iframe.
-        publishedSiteFrame = dom.loadApp(domain, publishedSiteUrl, publishedSiteFrame, publishedContainer)
-
         if (apps.map(app => app.domain).includes(domain)) {
           // A stored domain and matching registered domain were found
           await configureAppDemo(domain);
+
+          // Load the app into an iframe.
+          publishedSiteFrame = dom.loadApp(domain, publishedSiteUrl, publishedSiteFrame, publishedContainer)
 
           dom.show('editor', 'published-site', 'delete-app', 'learn-more');
         } else {
@@ -140,7 +140,7 @@ webnative.initialize(fissionInit).then(async state => {
         // Store the domain name
         await fs.write(storedDomainPath, domain);
         await fs.publish();
-        
+
         await configureAppDemo(domain);
 
         // Load the app. This will show a placeholder site until we publish our content.
