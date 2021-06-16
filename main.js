@@ -8,7 +8,7 @@ const createAppButton = document.getElementById('create-app-button');
 const deleteAppButton = document.getElementById('delete-app-button');
 
 const editorInput = document.getElementById('editor-input');
-const saveHtmlButtton = document.getElementById('save-html');
+const publishAppButton = document.getElementById('publish-app');
 
 let publishedSiteFrame = document.getElementById('published-site-frame');
 const publishedSiteUrl = document.getElementById('published-url');
@@ -64,7 +64,7 @@ webnative.initialize(fissionInit).then(async state => {
         const appPath = webnative.path.directory('public', 'Apps', `${name}`)
         const appIndexPath = webnative.path.file('public', 'Apps', `${name}`, 'Published', 'index.html')
 
-        saveHtmlButtton.addEventListener('click', async (event) => {
+        publishAppButton.addEventListener('click', async (event) => {
           event.preventDefault();
 
           // Retrieve content from editor and publish it to WNFS

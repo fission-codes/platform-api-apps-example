@@ -21,7 +21,7 @@
 <body>
   <main>
     <article>
-      <h1>Platform APIs demo</h1>
+      <h1>Platform APIs for Apps Demo</h1>
     </article>
 
     <article>
@@ -44,13 +44,17 @@
 
     <article id="editor" style="display: none">
       <h3>Edit App</h3>
-      <p>Your site has been registered, but we need to add some content and
-        publish it. Enter some HTML and save when you are ready.
+      <p>Your site has been registered, but we need to add some content and publish it.
       </p>
+      <p>Enter some HTML and publish when you are ready.</p>
       <form>
         <textarea id="editor-input" rows="10" cols="120"></textarea>
-        <input id="save-html" type="submit" value="Save"></input>
+        <input id="publish-app" type="submit" value="Publish"></input>
       </form>
+      <p>
+        Publish publishes an <code>index.html</code> with your HTML to WNFS using the webnative SDK
+        and calls <code>webnative.apps.publish</code> to create a new version of your app.
+      </p>
     </article>
 
     <article id="published-site" style="display: none">
@@ -66,6 +70,10 @@
       <h3>Delete App</h3>
       <p>You can delete your app to reset this example.</p>
       <button id="delete-app-button">Delete App</button>
+      <p>
+        Delete app calls <code>webnative.apps.deleteByDomain</code> to delete the app and removes
+        <code>index.html</code> from WNFS.
+      </p>
     </article>
 
     <article id="learn-more" style="display: none">
@@ -77,17 +85,15 @@
             platform-api-apps-example
           </a>
         </li>
-        <li>Fission forum post:
-          <a href="https://talk.fission.codes/t/platform-api-for-apps/2019" target="_blank">
-            Platform API for Apps 
-          </a>
-        </li>
         <li>Read the
           <a href="https://guide.fission.codes/developers/webnative/platform" target="_blank">Platform APIs guide</a>
-          for more information.
+          for more information
+        </li>
+        <li>Manage all of your apps with
+          <a href="https://dashboard.fission.codes" target="_blank">Fission Dashboard</a>
         </li>
       </ul>
-      </article>
+    </article>
   </main>
 </body>
 
